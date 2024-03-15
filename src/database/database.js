@@ -1,4 +1,3 @@
-// const { getItems, getItem } = require("../controllers/controllers");
 const { MongoClient } = require("mongodb");
 
 const uri =
