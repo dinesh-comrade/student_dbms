@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "fastify": "^4.26.2",
+    "joi": "^17.12.2",
     "mongodb": "^6.5.0"
   }
 }

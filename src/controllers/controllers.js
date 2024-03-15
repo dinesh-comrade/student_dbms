@@ -1,4 +1,5 @@
 const { ObjectId } = require("mongodb");
+const { postSchema } = require("../Schema/StudentSchema");
 
 const getItems = (dbCollection) => async (request, reply) => {
   try {
@@ -27,6 +28,12 @@ const getItem = (dbCollection) => async (request, reply) => {
 
 const postItem = (dbCollection) => async (request, reply) => {
   try {
+    const { error } = postSchema.validate(request.body, {
+      abortEarly: false,
+    });
+    if (error) {
+      return reply.code(400).send({ error: error.details[0].message });
+    }
     const newId = new ObjectId().toHexString();
     const newItem = { _id: newId, ...request.body };
     const student = await dbCollection.insertOne(newItem);
