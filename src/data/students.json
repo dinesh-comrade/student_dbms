@@ -1,0 +1,17 @@
+[
+  {
+    "_id": "5f3e3e3e3e3e3e3e3e3e3e3e",
+    "first_name": "John",
+    "last_name": "Doe",
+    "course": "B.Tech",
+    "branch": "CSE",
+    "year": "1",
+    "semester": "1",
+    "roll_no": "123456",
+    "cgpa": "8.0",
+    "dob": "01-01-1990",
+    "gender": "male",
+    "email": "johndoe@gmail.com",
+    "phone": "1234567890"
+  }
+]
