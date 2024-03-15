@@ -1,5 +1,5 @@
 const { ObjectId } = require("mongodb");
-const { validatePost } = require("../Schema/StudentSchema");
+const { validatePost } = require("../Validator/validate");
 
 const getItems = (dbCollection) => async (request, reply) => {
   try {
