@@ -13,7 +13,7 @@ const getItems = (dbCollection) => async (request, reply) => {
 const getItem = (dbCollection) => async (request, reply) => {
   try {
     const student = await dbCollection.findOne({
-      _id: ObjectId(request.params.id),
+      _id: request.params.id,
     });
     if (!student) {
       return reply.code(404).send({ error: "Student Not Found" });
@@ -39,15 +39,14 @@ const postItem = (dbCollection) => async (request, reply) => {
 
 const updateItem = (dbCollection) => async (request, reply) => {
   try {
-    const id = ObjectId.createFromHexString(request.params.id);
-    const result = await dbCollection.updateOne(
-      { _id: id },
+    const student = await dbCollection.updateOne(
+      { _id: request.params.id },
       { $set: request.body }
     );
-    if (result.matchedCount === 0) {
+    if (student.matchedCount === 0) {
       return reply.code(404).send({ error: "Student Not Found" });
     }
-    return reply.code(200).send(result);
+    return reply.code(200).send(student);
   } catch (error) {
     console.error("Error updating student:", error);
     return reply.code(500).send({ error: "Internal Server Error" });
@@ -56,12 +55,11 @@ const updateItem = (dbCollection) => async (request, reply) => {
 
 const deleteItem = (dbCollection) => async (request, reply) => {
   try {
-    const id = ObjectId.createFromHexString(request.params.id);
-    const result = await dbCollection.deleteOne({ _id: id });
-    if (result.deletedCount === 0) {
+    const student = await dbCollection.deleteOne({ _id: request.params.id });
+    if (student.deletedCount === 0) {
       return reply.code(404).send({ error: "Student Not Found" });
     }
-    return reply.code(200).send(result);
+    return reply.code(200).send(student);
   } catch (error) {
     console.error("Error deleting student:", error);
     return reply.code(500).send({ error: "Internal Server Error" });
