@@ -6,7 +6,6 @@ const {
   deleteItem,
 } = require("../controllers/controllers");
 
-const { postSchema } = require("../Schema/StudentSchema");
 const start = require("../database/database");
 
 async function routes(fastify, options) {
@@ -26,7 +25,6 @@ async function routes(fastify, options) {
   fastify.route({
     method: "POST",
     url: "/student",
-    schema: postSchema,
     handler: postItem(dbCollection),
   });
 

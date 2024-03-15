@@ -1,5 +1,8 @@
 const Joi = require("joi");
 
+const validator = (schema) => (payload) =>
+  schema.validate(payload, { abortEarly: false });
+
 const postSchema = Joi.object({
   first_name: Joi.string().required(),
   last_name: Joi.string(),
@@ -14,6 +17,4 @@ const postSchema = Joi.object({
   phone: Joi.number().integer().required(),
 });
 
-module.exports = {
-  postSchema,
-};
+exports.validatePost = validator(postSchema);
