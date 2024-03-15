@@ -21,4 +21,14 @@ const getItem = (dbCollection) => async (request, reply) => {
   }
 };
 
-module.exports = { getItems, getItem };
+const postItem = (dbCollection) => async (request, reply) => {
+  try {
+    const student = await dbCollection.insertOne(request.body);
+    return reply.code(201).send(student);
+  } catch (error) {
+    console.error("Error fetching student:", error);
+    return reply.code(500).send({ error: "Internal Server Error" });
+  }
+};
+
+module.exports = { getItems, getItem, postItem };
