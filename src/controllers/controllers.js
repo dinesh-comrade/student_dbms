@@ -12,7 +12,7 @@ const getItem = (dbCollection) => async (request, reply) => {
   try {
     const student = await dbCollection.findOne({ _id: request.params.id });
     if (!student) {
-      return reply.code(404).send({ error: "Student not found" });
+      return reply.code(404).send({ error: "Student Not Found" });
     }
     return reply.code(200).send(student);
   } catch (error) {
@@ -21,4 +21,4 @@ const getItem = (dbCollection) => async (request, reply) => {
   }
 };
 
-module.exports = { getItems };
+module.exports = { getItems, getItem };

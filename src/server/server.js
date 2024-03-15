@@ -1,7 +1,7 @@
 const fastify = require("fastify")({ logger: true });
 const PORT = 6000;
 
-fastify.register(require("../database/database"));
+fastify.register(require("../routes/routes"));
 
 async function fastifyServer() {
   try {
