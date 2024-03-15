@@ -4,7 +4,7 @@
   "description": "Welcome to the Student Database System Project! This project is a comprehensive system for managing student information in educational institutions. It leverages MongoDB Atlas for database management, Fastify.js for creating RESTful APIs, and Joi for request payload validation.",
   "main": "",
   "scripts": {
-    "start": "nodemon ./database/database.js"
+    "start": "nodemon ./server/server.js"
   },
   "author": "",
   "license": "ISC",
